@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+  <head>
+  <meta charset="UTF-8">
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+  </head>
+  <h1>Firebase Test</h1>
+  <p>Firebase console에 데이터가 추가 되었는지 확인하세요</p>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAonyXgt7XBuKLeRZXMhPnPnqka27FSMM4",
+    authDomain: "telegraphpole-nixcgp.firebaseapp.com",
+    databaseURL: "https://telegraphpole-nixcgp.firebaseio.com",
+    projectId: "telegraphpole-nixcgp",
+    storageBucket: "telegraphpole-nixcgp.appspot.com",
+    messagingSenderId: "60395372322",
+    appId: "1:60395372322:web:bc00166d2a2b31ac592f7b",
+    measurementId: "G-2WQ6NZWRMH"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+  var newPostKey = firebase.database().ref().child('posts').push().key;
+ 
+  var postData = {
+    anger:"시정하겠습니다",
+    flattery:"짱입니다!",
+    info:"test info입니다"
+  };
+ 
+  var updates = {};
+  updates['/board/' + newPostKey] = postData;
+ 
+  firebase.database().ref().update(updates);
+           
+</script>
